@@ -21,9 +21,22 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
+    <!-- Floating background shapes -->
+<div class="bg-shapes" aria-hidden="true">
+  <span class="shape circle" style="--x:8%;  --y:12%; --size:110px; --hue:#FFD1A1; --dur:14s; --dx:18px;"></span>
+  <span class="shape circle" style="--x:76%; --y:18%; --size:80px;  --hue:#FF7F50; --dur:16s; --dx:-22px;"></span>
+  <span class="shape pill"   style="--x:20%; --y:65%; --size:160px; --hue:#FFE7D1; --dur:18s; --dx:28px; --rot:24deg;"></span>
+  <span class="shape diamond"style="--x:88%; --y:70%; --size:70px;  --hue:#FF6600; --dur:13s; --dx:-16px;"></span>
+  <span class="shape circle" style="--x:42%; --y:82%; --size:60px;  --hue:#ffffff; --dur:12s; --dx:14px;"></span>
+  <span class="shape pill"   style="--x:58%; --y:40%; --size:130px; --hue:#FF7F50; --dur:20s; --dx:-26px; --rot:-18deg;"></span>
+  <span class="shape diamond"style="--x:10%; --y:88%; --size:50px;  --hue:#FFD1A1; --dur:15s; --dx:12px;"></span>
+  <span class="shape circle" style="--x:92%; --y:8%;  --size:42px;  --hue:#FFE7D1; --dur:11s; --dx:-10px;"></span>
+</div>
 
   <!-- Opening Section -->
   <section class="hero">
+    <div class="hero-floaters" aria-hidden="true">🎓 🧡 🎉 🦖 🥳</div>
+    
     <h1 class="hero-title">🎓 Congratulations, RR! 🎉</h1>
     <p class="subtitle">
       Yayyy 🥳 We finally graduated together from ITS 🎓🧡<br>
@@ -261,4 +274,138 @@
 </script>
 
 </body>
+<!-- Confetti library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  // Confetti trigger when husbands section enters view
+  document.addEventListener('DOMContentLoaded', () => {
+    const husbandsSection = document.querySelector('.husbands');
+    let confettiPlayed = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !confettiPlayed) {
+          confettiPlayed = true;
+
+          // Launch confetti
+          confetti({
+            particleCount: 120,
+            spread: 80,
+            origin: { y: 0.6 }
+          });
+
+          // Optionally do a little burst after a delay
+          setTimeout(() => {
+            confetti({
+              particleCount: 80,
+              spread: 60,
+              origin: { y: 0.6 }
+            });
+          }, 700);
+        }
+      });
+    }, { threshold: 0.4 }); // 40% of section visible
+
+    observer.observe(husbandsSection);
+  });
+</script>
+
+<script>
+(function(){
+  const layer = document.querySelector('.bg-shapes');
+
+  // ---------- utils ----------
+  const rand = (min, max) => Math.random() * (max - min) + min;
+  const pick = (arr) => arr[(Math.random() * arr.length) | 0];
+  const TYPES = ['circle','pill','diamond'];
+  const HUES  = ['#FFD1A1','#FF7F50','#FFE7D1','#FF6600','#ffffff'];
+
+  // Measure full document height
+  const docHeight = () => Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight
+  );
+
+  // Density scales with height and viewport
+  //   base = shapes per 1000px of page height
+  function densityPerK() {
+    const w = window.innerWidth;
+    if (w < 480)  return 6;   // phones
+    if (w < 900)  return 8;   // tablets
+    return 11;                // desktop
+  }
+
+  // Compute target count from height (clamped)
+  function computeCount(h) {
+    const perK = densityPerK();
+    const byHeight = Math.round((h / 1000) * perK);
+    const min = 10;
+    const max = 80; // cap so it never gets too heavy
+    return Math.max(min, Math.min(max, byHeight));
+  }
+
+  // Build shapes spread across the entire document height
+  function buildShapes() {
+    const h = docHeight();
+    layer.style.setProperty('--doc-h', h + 'px');
+
+    const count = computeCount(h);
+    layer.innerHTML = '';
+
+    for (let i = 0; i < count; i++) {
+      const el   = document.createElement('span');
+      const type = pick(TYPES);
+      el.className = `shape ${type}`;
+
+      // Position: x in %, y in absolute px anywhere in the doc
+      const x = rand(4, 96).toFixed(2) + '%';
+      const y = rand(0, Math.max(0, h - 240)); // keep a bit off the very bottom
+
+      el.style.left = x;
+      el.style.top  = y + 'px';
+
+      // Size & motion
+      const base = (type === 'diamond') ? rand(44, 100) : rand(60, 170);
+      el.style.setProperty('--size',  base.toFixed(0) + 'px');
+      el.style.setProperty('--hue',   pick(HUES));
+      el.style.setProperty('--amp',   (26 + Math.random()*22) + 'px');
+      el.style.setProperty('--dur',   (14 + Math.random()*10) + 's');
+      el.style.setProperty('--dx',    ((Math.random() > .5 ? 1 : -1) * (14 + Math.random()*18)) + 'px');
+      el.style.setProperty('--delay', (Math.random()*-8).toFixed(2) + 's');
+      el.style.setProperty('--spin',  (6 + Math.random()*10).toFixed(1) + 'deg');
+      el.style.setProperty('--rot',   ((Math.random()*360)|0) + 'deg');
+      el.style.setProperty('--s',     (0.9 + Math.random()*0.3).toFixed(2));
+
+      layer.appendChild(el);
+    }
+  }
+
+  // Throttled rebuild on resize/content changes (avoid flicker)
+  let rafId = 0, lastH = 0;
+  function scheduleRebuild(force = false) {
+    const h = docHeight();
+    const bigChange = Math.abs(h - lastH) > 120; // only rebuild if height changed a lot
+    if (!force && !bigChange) return;
+    lastH = h;
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(buildShapes);
+  }
+
+  // Pointer drift (optional, subtle)
+  window.addEventListener('mousemove', (e) => {
+    const mx = (e.clientX / window.innerWidth - 0.5) * 40; // -20..20
+    layer.style.translate = `calc(${mx.toFixed(2)}px / 40) 0`;
+  }, { passive: true });
+
+  // Rebuild whenever layout likely changes
+  window.addEventListener('load', () => scheduleRebuild(true));
+  window.addEventListener('resize', () => scheduleRebuild());
+  // If images load later and extend the page, observe height changes
+  const mo = new MutationObserver(() => scheduleRebuild());
+  mo.observe(document.documentElement, { childList: true, subtree: true, attributes: true });
+
+})();
+</script>
+
+
 </html>

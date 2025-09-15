@@ -561,3 +561,80 @@ footer {
     margin-top: 0.6rem; /* add a little breathing space from the title */
   }
 }
+.hero{ position:relative; overflow:hidden; }
+.hero-floaters{
+  position:absolute; inset:0; pointer-events:none; opacity:.25;
+  display:flex; gap:1.2rem; justify-content:center;
+  font-size:1.4rem; letter-spacing:1.2rem;
+  animation: floaty 10s linear infinite;
+}
+@keyframes floaty{
+  0%{ transform:translateY(40px) }
+  50%{ transform:translateY(-10px) }
+  100%{ transform:translateY(40px) }
+}
+/* Floating background shapes — extra floaty */
+.bg-shapes{
+  position:absolute;      /* was fixed */
+  top:0; left:0; right:0;
+  min-height: var(--doc-h, 100%);
+  z-index:-1;
+  pointer-events:none;
+}
+.shape{
+  position:absolute; left:var(--x); top:var(--y);
+  width:var(--size); height:var(--size);
+  background: var(--hue); opacity:.26;
+  box-shadow: 0 8px 22px rgba(0,0,0,.06);
+  border-radius: 12px;
+  /* use transform longhands so animations compose */
+  translate: 0 0;           /* animated in floatY */
+  rotate: var(--rot, 0deg); /* animated in spin */
+  scale: var(--s, 1);       /* animated in pulse */
+  filter: blur(.2px);
+  animation:
+    floatY var(--dur, 16s) ease-in-out infinite alternate,
+    driftX calc(var(--dur,16s) * 1.15) linear infinite,
+    spin   calc(var(--dur,16s) * 3) linear infinite,
+    pulse  calc(var(--dur,16s) * 2.2) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* shapes */
+.shape.circle   { border-radius: 999px; }
+.shape.pill     { border-radius: 999px / 60%; }
+.shape.diamond  { border-radius: 10px; rotate: calc(var(--rot,0deg) + 45deg); }
+
+/* bigger vertical bob */
+@keyframes floatY{
+  from { translate: 0 calc( var(--amp, 28px) * -1 ); }
+  to   { translate: 0 calc( var(--amp, 28px) ); }
+}
+
+/* horizontal drift uses margin so it composes with translate */
+@keyframes driftX{
+  from { margin-left:  calc(var(--dx, 18px)); }
+  to   { margin-left:  calc(var(--dx, 18px) * -1); }
+}
+
+/* slow micro-spin */
+@keyframes spin{
+  from { rotate: var(--rot, 0deg); }
+  to   { rotate: calc( var(--rot, 0deg) + var(--spin, 10deg) ); }
+}
+
+/* gentle breathe */
+@keyframes pulse{
+  0%,100% { scale: var(--s, 1); }
+  50%     { scale: calc( var(--s,1) * 1.04 ); }
+}
+
+/* subtle on phones */
+@media (max-width: 600px){
+  .shape{ opacity:.22; }
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .shape{ animation:none; }
+}
