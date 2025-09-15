@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RR Graduation 🎓🧡</title>
+
+    <!-- ✅ Add this favicon line -->
+  <link rel="icon" type="image/x-icon" href="assets/nailong.ico" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css"/>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+
+  <!-- Opening Section -->
+  <section class="hero">
+    <h1 class="hero-title">🎓 Congratulations, RR! 🎉</h1>
+    <p class="subtitle">
+      Yayyy 🥳 We finally graduated together from ITS 🎓🧡<br>
+      <span class="extra-line">I’m so glad I got you for secret gift 🎁</span>
+    </p>
+
+    <video autoplay playsinline controls class="hero-video">
+      <source src="assets/rayssa.mp4" type="video/mp4"/>
+      Your browser does not support video playback.
+    </video>
+
+    <!-- Button below video -->
+    <div class="skip-btn-wrapper">
+      <button onclick="scrollToNext()">Skip to Site ↓</button>
+    </div>
+  </section>
+
+  <!-- Memory Section -->
+  <section class="memory-gallery">
+    <h2>Our Journey Together</h2>
+
+    <p>
+      You’ve been such an amazing friend — with your hard work, your love for
+      <span class="orange-text">🧡orange🧡</span>, and of course your iconic Nailong obsession 🦖!
+    </p>
+
+    <img src="assets/nailong.jpg" alt="Nailong" class="nailong-img"/>
+
+    <p>
+      Do you remember when we first talked in the <strong>group angkatan</strong> about Zepeto? xD
+      That was so cute ngl — we went from that first chat to becoming friends, joining a bigger circle,
+      and now it's just the four of us :>
+    </p>
+
+    <!-- ✅ All figures inside .gallery for consistent sizing -->
+    <div class="gallery">
+      <figure>
+        <img src="assets/zepeto.jpg" alt="Zepeto Photoshoot"/>
+        <figcaption>📸 our zepeto photoshoot together xixix</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/with_nabila.jpg" alt="Photobox with Nabila"/>
+        <figcaption>🌸 throwback ke 2022, first semester vibes jalan bareng Nabila 😆</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/exam.jpg" alt="Selfie Before Exam"/>
+        <figcaption>📚 selfie before exam HAHAH (2023 era)</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/mandi_bola.jpg" alt="Mandi Bola at Ciputra World"/>
+        <figcaption>🎈at Happy Time Ciputra World — lempar² bola sama bocah random HAHA</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/taiwan.jpg" alt="Taiwan Internship"/>
+        <figcaption>🌞 we went to Taiwan for our NTUST lab internship — the weather was blazing hot!</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/taipei_museum.jpg" alt="Taipei Astronomical Museum"/>
+        <figcaption>🪐 exploring the universe (and taking selfies) with Lunaa at Taipei Astronomical Museum 🌠</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/lost_bus.jpg" alt="Lost on the bus in Taipei"/>
+        <figcaption>🚌 got lost on the bus — driver couldn’t speak English 😭 but we survived HAHA</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/CKS.jpg" alt="Chiang Kai-shek Memorial Hall"/>
+        <figcaption>🏛 visited Chiang Kai-shek Memorial Hall 🏯</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/taipei_zoo.jpg" alt="Taipei Zoo"/>
+        <figcaption>🐧 visiting the penguins at Taipei Zoo!</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/proposal.JPG" alt="Self Photoshoot with Lita & Sabb"/>
+        <figcaption>💐 serving cowboy + proposal vibes during our self photoshoot with Lita & Sabb 🤠🤣</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/cool.JPG" alt="Cowgirls and bodyguards assemble"/>
+        <figcaption>🔥 when the cowgirls and bodyguards assemble 💥</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/gaya_masnur.JPG" alt="Gaya Mas Nur, pegang kepala mikir"/>
+        <figcaption>🧠 gaya Mas Nur — pegang kepala mikir 😂</figcaption>
+      </figure>
+
+      <figure>
+        <img src="assets/selfie.JPG" alt="Squad selfie"/>
+        <figcaption>🎉 squad energy level: 100 🔥</figcaption>
+      </figure>
+    </div>
+
+    <!-- Emotional closing text -->
+    <p class="memory-closing">
+      There are so many memories I couldn’t even fit all of them here... 🥹
+      Every laugh, every late-night call, every random adventure — they all mean so much to me.
+      I’m so grateful for every single moment we shared, and I wouldn’t trade them for anything.
+      Here’s to all the memories we made and all the ones we’ll make in the future. 🧡✨
+    </p>
+  </section>
+
+<!-- Swiper CSS (CDN) -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css"/>
+
+<!-- Husband Clips -->
+<section class="husbands" style="background: linear-gradient(90deg, #FF6600 0%, #FF7F50 60%, #FFD1A1 100%); padding:40px 0;">
+  <h2 style="text-align:center; color:white;">Greetings from Your Husbands 👀</h2>
+
+  <div class="husband-slider" style="position:relative; max-width:560px; margin:0 auto;">
+    <!-- tombol PREV -->
+<button type="button" class="husband-nav husband-prev" aria-label="Previous">
+  <span>‹</span>
+</button>
+
+    <div class="swiper husband-swiper" style="overflow:visible;">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="display:flex; flex-direction:column; align-items:center;">
+          <video controls style="width:100%; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.25);">
+            <source src="assets/minghao.mp4" type="video/mp4"/>
+          </video>
+          <p class="video-caption" style="color:white; margin-top:8px;">💛 Minghao says hi!</p>
+        </div>
+        <div class="swiper-slide" style="display:flex; flex-direction:column; align-items:center;">
+          <video controls style="width:100%; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.25);">
+            <source src="assets/scoups.mp4" type="video/mp4"/>
+          </video>
+          <p class="video-caption" style="color:white; margin-top:8px;">🧡 S.Coups sends his love!</p>
+        </div>
+      </div>
+
+      <!-- Pagination dots -->
+    <div class="swiper-pagination" 
+     style="margin-top:16px; position:relative;"></div>
+
+    </div>
+
+    <!-- tombol NEXT -->
+<button type="button" class="husband-nav husband-next" aria-label="Next">
+  <span>›</span>
+</button>
+  </div>
+</section>
+
+<!-- Swiper JS (CDN) – taruh di BAWAH konten -->
+<script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  // Pastikan DOM sudah siap (opsional, karena <script> sudah di bawah)
+  document.addEventListener('DOMContentLoaded', function () {
+    const husbandSwiper = new Swiper('.husband-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.husband-next', prevEl: '.husband-prev' },
+    });
+  });
+</script>
+
+<!-- Notes Section -->
+<section class="notes">
+  <h2>Behind the Scenes 💌</h2>
+  <p>
+    I actually tried to add a greeting from Abyan too… but he said no 😭
+    and ended up ghosting me hahah.
+  </p>
+</section>
+
+<div class="notes-shots">
+  <img src="assets/dc1.jpg" alt="Chat screenshot 1" loading="lazy">
+  <img src="assets/dc2.jpg" alt="Chat screenshot 2" loading="lazy">
+</div>
+
+<p class="notes-ending">
+  Anyways, this site is just for you — let’s celebrate your big day! 💕  
+  Love u bestiee! 🧡
+</p>
+
+<p class="notes-sign">
+  <span class="signature-title">cheers to us! to more milestones 🥂</span>
+  <img src="assets/ttd.png" alt="Rayssa signature" class="signature-img">
+  <span class="signature-name">rayssa</span>
+</p>
+
+  <footer>
+    <p>Made with 🧡 for RR’s Graduation</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function scrollToNext() {
+      document.querySelector('.memory-gallery')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+  <!-- SwiperJS -->
+<script>
+  const husbandSwiper = new Swiper(".husband-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".husband-next", prevEl: ".husband-prev" }, // ⬅ pakai tombol custom
+  });
+</script>
+
+</body>
+</html>
