@@ -23,10 +23,17 @@
       <span class="extra-line">I’m so glad I got you for secret gift 🎁</span>
     </p>
 
-    <video autoplay playsinline controls class="hero-video">
-      <source src="assets/rayssa.mp4" type="video/mp4"/>
-      Your browser does not support video playback.
-    </video>
+<!-- Responsive YouTube embed for your hero video -->
+<div class="yt-wrap">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/jHFlBHSqILg?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+    title="RR Graduation Tribute"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+</div>
 
     <!-- Button below video -->
     <div class="skip-btn-wrapper">
@@ -135,38 +142,52 @@
 <section class="husbands" style="background: linear-gradient(90deg, #FF6600 0%, #FF7F50 60%, #FFD1A1 100%); padding:40px 0;">
   <h2 style="text-align:center; color:white;">Greetings from Your Husbands 👀</h2>
 
-  <div class="husband-slider" style="position:relative; max-width:560px; margin:0 auto;">
-    <!-- tombol PREV -->
-<button type="button" class="husband-nav husband-prev" aria-label="Previous">
-  <span>‹</span>
-</button>
+  <div class="husband-slider" style="position:relative; max-width:560px; margin:0 auto; overflow:visible;">
 
-    <div class="swiper husband-swiper" style="overflow:visible;">
+    <!-- PREV -->
+    <button type="button" class="husband-nav husband-prev" aria-label="Previous"><span>‹</span></button>
+
+    <div class="swiper husband-swiper">
       <div class="swiper-wrapper">
+        <!-- Minghao -->
         <div class="swiper-slide" style="display:flex; flex-direction:column; align-items:center;">
-          <video controls style="width:100%; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.25);">
-            <source src="assets/minghao.mp4" type="video/mp4"/>
-          </video>
+          <div class="yt-wrap" style="position:relative; width:100%; aspect-ratio:16/9;">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/2GCN8aI-n4A?rel=0&modestbranding=1"
+              title="Minghao Graduation Greeting"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+              style="position:absolute; inset:0; width:100%; height:100%; border:0;">
+            </iframe>
+          </div>
           <p class="video-caption" style="color:white; margin-top:8px;">💛 Minghao says hi!</p>
         </div>
+
+        <!-- S.Coups -->
         <div class="swiper-slide" style="display:flex; flex-direction:column; align-items:center;">
-          <video controls style="width:100%; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.25);">
-            <source src="assets/scoups.mp4" type="video/mp4"/>
-          </video>
+          <div class="yt-wrap" style="position:relative; width:100%; aspect-ratio:16/9;">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/rfYLGBwtH_Q?rel=0&modestbranding=1"
+              title="S.Coups Graduation Greeting"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+              style="position:absolute; inset:0; width:100%; height:100%; border:0;">
+            </iframe>
+          </div>
           <p class="video-caption" style="color:white; margin-top:8px;">🧡 S.Coups sends his love!</p>
         </div>
       </div>
-
-      <!-- Pagination dots -->
-    <div class="swiper-pagination" 
-     style="margin-top:16px; position:relative;"></div>
-
     </div>
 
-    <!-- tombol NEXT -->
-<button type="button" class="husband-nav husband-next" aria-label="Next">
-  <span>›</span>
-</button>
+    <!-- NEXT (moved INSIDE the slider) -->
+    <button type="button" class="husband-nav husband-next" aria-label="Next"><span>›</span></button>
+
+    <!-- Dots -->
+    <div class="swiper-pagination" style="margin-top:16px; position:relative;"></div>
   </div>
 </section>
 
