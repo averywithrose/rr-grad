@@ -19,6 +19,12 @@ body {
 .memory-caption {
   font-size: 0.9rem; /* bump up a bit for readability */
 }
+/* cegah halaman melebar ke samping */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;   /* atau: overflow-x: clip; */
+}
 
 /* style.css */
 body {
@@ -580,6 +586,7 @@ footer {
   min-height: var(--doc-h, 100%);
   z-index:-1;
   pointer-events:none;
+  overflow: hidden;
 }
 .shape{
   position:absolute; left:var(--x); top:var(--y);
