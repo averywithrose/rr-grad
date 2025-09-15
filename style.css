@@ -541,3 +541,23 @@ footer {
   height: 100%;
   display: block;
 }
+@media (max-width: 600px) {
+  .notes-ending {
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
+    text-align: center;
+    line-height: 1.7; /* slightly more space between lines */
+  }
+
+  .notes-sign {
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .notes-sign .signature-img {
+    max-width: 140px; /* shrink slightly for mobile */
+    margin-top: 0.6rem; /* add a little breathing space from the title */
+  }
+}
